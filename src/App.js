@@ -8,11 +8,13 @@ import Header from "./components/Header";
 import Products from "./pages/Products";
 import Footer from "./components/Footer";
 import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
 function App() {
   // Create a custom theme with updated typography
   const theme = createTheme({
     typography: {
       fontFamily: "Poppins, sans-serif",
+      fontSize: 14,
     },
   });
   return (
@@ -26,6 +28,7 @@ function App() {
             <Route path="/products" element={<Products />} />
             <Route path="/product/:id" element={<ProductDetailPage />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/checkout" element={<Checkout />} />
           </Routes>
           <Footer />
         </Router>

@@ -5,6 +5,7 @@ import { BiTrash, BiX, BiCartAlt, BiCart, BiShoppingBag } from "react-icons/bi";
 import { BsBag } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { ReactComponent as SadFace } from "../images/sad-face.svg";
+import EmptyCart from "./EmptyCart";
 
 export default function DrawerCart({ onClose }) {
   const { cart, deleteProductFromCart } = useContext(GlobalContext);
@@ -93,33 +94,7 @@ export default function DrawerCart({ onClose }) {
             ))}
           </Box>
         ) : (
-          <div className="empty-cart">
-            <Box
-              sx={{
-                position: "relative",
-                display: "flex",
-                justifyContent: "center",
-              }}
-            >
-              <BsBag className="cart" />
-              <SadFace className="sadface" />
-            </Box>
-            <Typography className="heading">
-              Oops! Your cart is empty
-            </Typography>
-            <Typography className="message">
-              Looks like you have not added anything to your cart. Go explore
-              our products.
-            </Typography>
-            <Button
-              className="btn btn-primary"
-              component={Link}
-              to={`/products`}
-              onClick={onClose}
-            >
-              Shop Now
-            </Button>
-          </div>
+          <EmptyCart onClose={onClose} />
         )}
 
         {cart.length > 0 ? (

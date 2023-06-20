@@ -86,6 +86,13 @@ export const GlobalProvider = ({ children }) => {
     });
   };
 
+  // const promoCode = (product) => {
+  //   dispatch({
+  //     type: "SET_PROMO_CODE",
+  //     payload: amount,
+  //   });
+  // };
+
   return (
     <GlobalContext.Provider
       value={{

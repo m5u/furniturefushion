@@ -55,8 +55,10 @@ export default function Header() {
       window.removeEventListener("scroll", handleScroll); //cleanup function
     };
   }, []);
-
-  const cartCount = cart.reduce((acc, product) => acc + product.quantity, 0);
+  debugger;
+  const cartCount = cart.reduce((acc, product) => {
+    return acc + product.quantity;
+  }, 0);
 
   return (
     <>

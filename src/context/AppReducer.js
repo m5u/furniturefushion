@@ -113,6 +113,11 @@ const AppReducer = (state, action) => {
       const increaseQuantity = state.cart.map((product) => {
         if (product.id === action.payload) {
           return { ...product, quantity: product.quantity + 1 };
+        } else {
+          return {
+            ...product,
+            quantity: product.quantity,
+          };
         }
       });
       return {

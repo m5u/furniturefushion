@@ -47,6 +47,7 @@ $danger-color: #dc3545; // red
 .MuiTouchRipple-root{
     display: none;
 }
+
 /*--------------------------------*/
 .section{
     padding: 80px 0;
@@ -1384,5 +1385,50 @@ $danger-color: #dc3545; // red
                 object-fit: contain;
             }
         }
+    }
+}
+.cart-summary{
+    .subtotal{
+        > div{
+            padding-bottom: 8px;
+            font-size: 14px;
+            &:last-child{
+                padding-bottom: 0;
+            }
+        }
+        
+    }
+    .amount{
+        font-weight: 600;
+    }
+    .promotion{
+        position: relative;
+        >p{
+            margin-bottom: 8px;
+        }
+        form{
+            position: relative;
+        }
+        .text-field{
+            //padding: 8px 8px 8px 16px;
+            box-shadow: none;
+            border-radius: 30px;
+            background: #eee;
+            width: 100%;
+            input{
+                font-size: 14px;
+                padding: 0px 92px 0 16px;
+                height: 48px;
+            }
+            fieldset{
+              border:none;
+            }
+        }  
+        .btn{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            height: 48px;
+        }      
     }
 }
