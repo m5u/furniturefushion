@@ -177,6 +177,23 @@ $danger-color: #dc3545; // red
             padding: 0 16px;
             color:#191919;
             font-size: 14px;
+            transition: all 0.3s ease;
+            &:hover{
+                background-color: transparent;
+            }
+            &.active{
+                color:$primary-color;
+                &::after{
+                    content: "";
+                    position: absolute;
+                    bottom: -6px;
+                    left: 50%;
+                    width: 20px;
+                    height: 3px;
+                    background: $primary-color;
+                    transform: translateX(-50%);
+                }
+            }
         }
     }
     .right-section{
@@ -186,14 +203,23 @@ $danger-color: #dc3545; // red
         padding: 8px 8px 8px 16px;
         box-shadow: none;
         border-radius: 30px;
-        // background: #fcfcfc;
-        background: #eee;
+        // background: #eee;
+        border: 2px solid rgba(0, 0, 0, 0.25);
+        min-width: 260px;
+        position: relative;
+        height: 48px;
+        margin-right: 16px;
+        > div{
+            width: 100%;
+        }
         input{
             font-size: 14px;
         }
         .icon{
             border: none;
             cursor: pointer;
+            background: transparent;
+       
             svg{
                 width: 20px;
                 height: 20px;
@@ -212,7 +238,8 @@ $danger-color: #dc3545; // red
             background: transparent;
         }
         svg{
-            color: #191919;
+            // color: #191919;
+            color:#494949;
             width: 24px;
             height: 24px;
         }

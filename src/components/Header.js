@@ -11,7 +11,7 @@ import {
   Button,
   Drawer,
 } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import Search from "./Search";
 import ShoppingBasketTwoToneIcon from "@mui/icons-material/ShoppingBasketTwoTone";
@@ -21,7 +21,14 @@ import DrawerCart from "./DrawerCart";
 
 export default function Header() {
   const { cart } = useContext(GlobalContext);
-  const pages = ["Home", "About", "Products", "Contact"];
+  // const pages = ["Home", "About", "Products", "Contact"];
+  const pages = [
+    { label: "Home", path: "/home" },
+    { label: "About", path: "/about" },
+    { label: "Products", path: "/products" },
+    { label: "Contact", path: "/contact" },
+  ];
+  const location = useLocation();
   const [anchorElNav, setAnchorElNav] = useState(null);
 
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -89,14 +96,15 @@ export default function Header() {
             >
               {pages.map((page) => (
                 <Button
-                  component={Link}
-                  to={`/${page}`}
+                  key={page.label}
+                  component={NavLink}
+                  to={page.path}
+                  activeClassName="active"
                   className="menu"
-                  key={page}
+                  sx={{ my: 2, color: "white" }}
                   onClick={handleCloseNavMenu}
                 >
-                  {/* <Link to={`/products`}></Link> */}
-                  {page}
+                  {page.label}
                 </Button>
               ))}
             </Box>

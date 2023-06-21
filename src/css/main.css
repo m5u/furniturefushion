@@ -148,6 +148,23 @@ input[type=number] {
   padding: 0 16px;
   color: #191919;
   font-size: 14px;
+  transition: all 0.3s ease;
+}
+.navbar .menu-list .menu:hover {
+  background-color: transparent;
+}
+.navbar .menu-list .menu.active {
+  color: #FF6000;
+}
+.navbar .menu-list .menu.active::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  width: 20px;
+  height: 3px;
+  background: #FF6000;
+  transform: translateX(-50%);
 }
 .navbar .right-section {
   display: flex;
@@ -156,7 +173,14 @@ input[type=number] {
   padding: 8px 8px 8px 16px;
   box-shadow: none;
   border-radius: 30px;
-  background: #eee;
+  border: 2px solid rgba(0, 0, 0, 0.25);
+  min-width: 260px;
+  position: relative;
+  height: 48px;
+  margin-right: 16px;
+}
+.navbar .search-wrap > div {
+  width: 100%;
 }
 .navbar .search-wrap input {
   font-size: 14px;
@@ -164,6 +188,7 @@ input[type=number] {
 .navbar .search-wrap .icon {
   border: none;
   cursor: pointer;
+  background: transparent;
 }
 .navbar .search-wrap .icon svg {
   width: 20px;
@@ -182,7 +207,7 @@ input[type=number] {
   background: transparent;
 }
 .navbar .top-cart svg {
-  color: #191919;
+  color: #494949;
   width: 24px;
   height: 24px;
 }
