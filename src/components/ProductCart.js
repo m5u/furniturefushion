@@ -21,13 +21,6 @@ import { Link } from "react-router-dom";
 export default function ProductCart() {
   const { cart, quantityIncrement, quantityDecrement } =
     useContext(GlobalContext);
-  // const updatedCart = cart.reduce((acc, product) => {
-  //   const existingProduct = acc.find((item) => item.id === product.id);
-  //   if (existingProduct) {
-  //     existingProduct.quantity += product.quantity || 1;
-  //   }
-  //   return acc;
-  // }, []);
   const [promoText, setPromoText] = useState("");
   const [discount, setDiscount] = useState(0);
   const validDiscountCodes = [

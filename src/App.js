@@ -9,6 +9,7 @@ import Products from "./pages/Products";
 import Footer from "./components/Footer";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
+import Contact from "./pages/Contact";
 function App() {
   // Create a custom theme with updated typography
   const theme = createTheme({
@@ -29,6 +30,7 @@ function App() {
             <Route path="/product/:id" element={<ProductDetailPage />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/checkout" element={<Checkout />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
           <Footer />
         </Router>
