@@ -51,10 +51,10 @@ const CategorySection = () => {
                 Shop by Categoies
               </Typography>
             </Grid>
-            {categoryItem.map((item) => (
-              <Grid item xs={12} md={2} key={item.id} className="category">
+            <Grid item xs={12} md={12} className="category-card-wrap">
+              {categoryItem.map((item) => (
                 <Card className="category-card">
-                  <CardContent className="category-content">
+                  <CardContent className="category-content" key={item.id}>
                     <div
                       className="category-icon"
                       sx={{
@@ -68,8 +68,8 @@ const CategorySection = () => {
                     {item.title}
                   </Typography>
                 </Card>
-              </Grid>
-            ))}
+              ))}
+            </Grid>
           </Grid>
         </Container>
       </section>

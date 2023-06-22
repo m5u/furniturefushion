@@ -89,27 +89,17 @@ export default function Header() {
             <Typography variant="h6" noWrap component="a" href="/">
               Furniture.
             </Typography>
-            {/* <IconButton onClick={handleOpenNavMenu}>
-              <MenuIcon />
-            </IconButton> */}
 
-            {/* <Menu
+            <Box
               className={
-                isChecked ? "responsive-menu checked" : "responsive-menu"
+                isChecked ? "menu-list-wrap checked" : "menu-list-wrap"
               }
             >
-              {pages.map((page) => (
-                <MenuItem key={page}>
-                  <Typography>{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu> */}
-            <Box
-              className={isChecked ? "menu-list checked" : "menu-list"}
-              sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
-            >
               <Search />
-              <Box>
+              <Box
+                className={isChecked ? "menu-list checked" : "menu-list"}
+                sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
+              >
                 {pages.map((page) => (
                   <Button
                     key={page.label}

@@ -214,7 +214,7 @@ export default function ProductDetail() {
                       {/* <BiCheck className="check-icon" /> */}
                       <BsBoxSeam className="box-icon" />
                     </button>
-                    <Button className="btn btn-secondary">Buy Now</Button>
+                    {/* <Button className="btn btn-secondary">Buy Now</Button> */}
                   </>
                 ) : (
                   <button className="btn btn-primary btn-disabled" disabled>
@@ -229,8 +229,8 @@ export default function ProductDetail() {
           {/* <button className="btn btn-primary" onClick={handleBackClick}>
             Back
           </button> */}
-          <Grid container className="product-detail-wrap">
-            <Grid item md={8} className="product-detail-left">
+          <Box className="product-detail-wrap">
+            <Box className="product-detail-left">
               <Box className="product-detail-tab tab-wrapper">
                 <Tabs value={value} onChange={handleChange} centered>
                   <Tab label="Description" className="tab" />
@@ -264,7 +264,12 @@ export default function ProductDetail() {
               </TabPanel>
               <TabPanel value={value} index={2}>
                 <div className="tab-container">
-                  <Card>
+                  <Card
+                    sx={{
+                      boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
+                      borderRadius: "12px",
+                    }}
+                  >
                     <CardContent>
                       <div className="avatar-user">
                         <Avatar
@@ -297,8 +302,8 @@ export default function ProductDetail() {
                   </Card>
                 </div>
               </TabPanel>
-            </Grid>
-            <Grid item md={4} className="product-detail-right">
+            </Box>
+            <Box className="product-detail-right">
               <Typography variant="h2">Customer Rating</Typography>
               <div className="rating-bars">
                 <div className="bar">
@@ -342,8 +347,8 @@ export default function ProductDetail() {
                   <Typography>{Math.floor(onePercantage)}%</Typography>
                 </div>
               </div>
-            </Grid>
-          </Grid>
+            </Box>
+          </Box>
         </Container>
       </section>
     </>
