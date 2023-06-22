@@ -67,46 +67,63 @@ export default function Header() {
     return acc + product.quantity;
   }, 0);
 
+  const [isChecked, setIsChecked] = useState(false);
+  const handleToggle = () => {
+    setIsChecked(!isChecked);
+    if (!isChecked) {
+      document.body.classList.add("open-menu");
+    } else {
+      document.body.classList.remove("open-menu");
+    }
+  };
+
   return (
     <>
-      <AppBar className={trigger ? "navbar scrolled" : "navbar"}>
+      <AppBar
+        className={`navbar ${isChecked ? "menu-open" : ""} ${
+          trigger ? "scrolled" : ""
+        }`}
+      >
         <Container maxWidth="xl">
           <Toolbar>
             <Typography variant="h6" noWrap component="a" href="/">
               Furniture.
             </Typography>
             {/* <IconButton onClick={handleOpenNavMenu}>
-            <MenuIcon />
-          </IconButton>
-          <Menu
-            className="responsive-menu"
-            anchorEl={anchorElNav}
-            open={Boolean(anchorElNav)}
-            onClose={() => setAnchorElNav(null)}
-          >
-            {pages.map((page) => (
-              <MenuItem key={page}>
-                <Typography>{page}</Typography>
-              </MenuItem>
-            ))}
-          </Menu> */}
-            <Box
-              className="menu-list"
-              sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
+              <MenuIcon />
+            </IconButton> */}
+
+            {/* <Menu
+              className={
+                isChecked ? "responsive-menu checked" : "responsive-menu"
+              }
             >
               {pages.map((page) => (
-                <Button
-                  key={page.label}
-                  component={NavLink}
-                  to={page.path}
-                  activeClassName="active"
-                  className="menu"
-                  sx={{ my: 2, color: "white" }}
-                  onClick={handleCloseNavMenu}
-                >
-                  {page.label}
-                </Button>
+                <MenuItem key={page}>
+                  <Typography>{page}</Typography>
+                </MenuItem>
               ))}
+            </Menu> */}
+            <Box
+              className={isChecked ? "menu-list checked" : "menu-list"}
+              sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
+            >
+              <Search />
+              <Box>
+                {pages.map((page) => (
+                  <Button
+                    key={page.label}
+                    component={NavLink}
+                    to={page.path}
+                    activeClassName="active"
+                    className="menu"
+                    sx={{ my: 2, color: "white" }}
+                    onClick={handleCloseNavMenu}
+                  >
+                    {page.label}
+                  </Button>
+                ))}
+              </Box>
             </Box>
             <div className="right-section">
               <Search />
@@ -119,6 +136,16 @@ export default function Header() {
                   ""
                 )}
               </IconButton>
+              <Box
+                className={isChecked ? "navbar-icon clicked" : "navbar-icon"}
+              >
+                <input type="checkbox" id="checkbox" onChange={handleToggle} />
+                <label for="checkbox" className="toggle">
+                  <div className="bars" id="bar1"></div>
+                  <div className="bars" id="bar2"></div>
+                  <div className="bars" id="bar3"></div>
+                </label>
+              </Box>
             </div>
           </Toolbar>
         </Container>
