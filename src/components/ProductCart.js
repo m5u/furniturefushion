@@ -77,7 +77,10 @@ export default function ProductCart() {
             sx={{ alignItems: "flex-start" }}
           >
             <Grid item md={8}>
-              <Paper sx={{ width: "100%", overflowX: "auto" }}>
+              <Paper
+                sx={{ width: "100%", overflowX: "auto" }}
+                className="cart-table-wrap"
+              >
                 <TableContainer className="cart-table">
                   <TableHead>
                     <TableRow>

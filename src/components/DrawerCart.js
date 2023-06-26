@@ -117,8 +117,9 @@ export default function DrawerCart({ onClose }) {
               <Link to={`/cart`} onClick={onClose}>
                 <Button className="btn btn-primary">View Cart</Button>
               </Link>
-
-              <Button className="btn btn-dark">Checkout </Button>
+              <Link to={`/checkout`} onClick={onClose}>
+                <Button className="btn btn-dark">Checkout </Button>
+              </Link>
             </Box>
           </Box>
         ) : (

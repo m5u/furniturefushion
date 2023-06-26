@@ -11,6 +11,7 @@ import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import Contact from "./pages/Contact";
 import About from "./pages/About";
+import ScrollToTop from "./components/ScrollToTop";
 function App() {
   // Create a custom theme with updated typography
   const theme = createTheme({
@@ -33,6 +34,7 @@ function App() {
     <GlobalProvider>
       <ThemeProvider theme={theme}>
         <Router>
+          <ScrollToTop />
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />

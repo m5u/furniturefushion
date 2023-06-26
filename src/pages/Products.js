@@ -54,13 +54,14 @@ export default function Products() {
     }
   };
 
+  const filteredItems = {
+    category: selectedCategory,
+    material: selectedMaterial,
+    price: selectedRange,
+  };
   const handleFilter = () => {
     //debugger;
-    const filteredItems = {
-      category: selectedCategory,
-      material: selectedMaterial,
-      price: selectedRange,
-    };
+
     filterProduct(filteredItems); // Call filterProduct from the context
     //setSearchText("");
     setTitle("Product List");
@@ -68,6 +69,17 @@ export default function Products() {
 
   const [title, setTitle] = useState(null);
   const location = useLocation();
+
+  // if (location && location.state) {
+  //   if (location.state.category) {
+  //     debugger;
+  //     setSelectedCategory([location.state.category]);
+  //     const fitlerByCategory = {
+  //       category: [location.state.category],
+  //     };
+  //     filterProduct(fitlerByCategory);
+  //   }
+  // }
 
   useEffect(() => {
     //debugger;
@@ -84,6 +96,17 @@ export default function Products() {
     } else {
       setSearchText(""); // Clear the search query in the state
       setTitle("Product List"); // Set the title as "Product List" if no search query is present
+    }
+
+    if (location && location.state) {
+      if (location.state.category) {
+        debugger;
+        setSelectedCategory([location.state.category]);
+        const fitlerByCategory = {
+          category: [location.state.category],
+        };
+        filterProduct(fitlerByCategory);
+      }
     }
   }, [location.state]);
 
