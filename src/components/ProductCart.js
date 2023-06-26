@@ -10,6 +10,7 @@ import {
   Grid,
   Box,
   Button,
+  Paper,
 } from "@mui/material";
 import { Container } from "@mui/system";
 
@@ -76,60 +77,63 @@ export default function ProductCart() {
             sx={{ alignItems: "flex-start" }}
           >
             <Grid item md={8}>
-              <TableContainer className="cart-table">
-                <TableHead>
-                  <TableRow>
-                    <TableCell></TableCell>
-                    <TableCell>Product</TableCell>
-                    <TableCell>Price</TableCell>
-                    <TableCell>Quantity</TableCell>
-                    <TableCell>SubTotal</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {cart && cart.length > 0 ? (
-                    cart.map((product) => (
-                      <TableRow key={product.id}>
-                        <TableCell>
-                          <div className="product-thumbnail">
-                            <img src={product.image} alt={product.title} />
-                          </div>
-                        </TableCell>
-                        <TableCell>{product.title}</TableCell>
-                        <TableCell>{product.price}</TableCell>
-                        <TableCell>
-                          <div className="quantity-wrap">
-                            <IconButton
-                              className="icon minus"
-                              onClick={() => handleDecrement(product.id)}
-                            >
-                              <BiMinus />
-                            </IconButton>
-                            <TextField
-                              className="input-text-field"
-                              type="number"
-                              value={product.quantity}
-                              readOnly
-                            />
-                            <IconButton
-                              className="icon add"
-                              onClick={() => handleIncrement(product.id)}
-                            >
-                              <BiPlus />
-                            </IconButton>
-                          </div>
-                        </TableCell>
-                        <TableCell>{product.price}</TableCell>
-                      </TableRow>
-                    ))
-                  ) : (
+              <Paper sx={{ width: "100%", overflowX: "auto" }}>
+                <TableContainer className="cart-table">
+                  <TableHead>
                     <TableRow>
-                      <TableCell colSpan={5}>No data</TableCell>
+                      <TableCell></TableCell>
+                      <TableCell>Product</TableCell>
+                      <TableCell>Price</TableCell>
+                      <TableCell>Quantity</TableCell>
+                      <TableCell>SubTotal</TableCell>
                     </TableRow>
-                  )}
-                </TableBody>
-              </TableContainer>
+                  </TableHead>
+                  <TableBody>
+                    {cart && cart.length > 0 ? (
+                      cart.map((product) => (
+                        <TableRow key={product.id}>
+                          <TableCell>
+                            <div className="product-thumbnail">
+                              <img src={product.image} alt={product.title} />
+                            </div>
+                          </TableCell>
+                          <TableCell>{product.title}</TableCell>
+                          <TableCell>{product.price}</TableCell>
+                          <TableCell>
+                            <div className="quantity-wrap">
+                              <IconButton
+                                className="icon minus"
+                                onClick={() => handleDecrement(product.id)}
+                              >
+                                <BiMinus />
+                              </IconButton>
+                              <TextField
+                                className="input-text-field"
+                                type="number"
+                                value={product.quantity}
+                                readOnly
+                              />
+                              <IconButton
+                                className="icon add"
+                                onClick={() => handleIncrement(product.id)}
+                              >
+                                <BiPlus />
+                              </IconButton>
+                            </div>
+                          </TableCell>
+                          <TableCell>{product.price}</TableCell>
+                        </TableRow>
+                      ))
+                    ) : (
+                      <TableRow>
+                        <TableCell colSpan={5}>No data</TableCell>
+                      </TableRow>
+                    )}
+                  </TableBody>
+                </TableContainer>
+              </Paper>
             </Grid>
+
             <Grid item md={4}>
               {cart && cart.length > 0 ? (
                 <>

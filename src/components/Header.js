@@ -86,7 +86,7 @@ export default function Header() {
       >
         <Container maxWidth="xl">
           <Toolbar>
-            <Typography variant="h6" noWrap component="a" href="/">
+            <Typography variant="h6" component="a" href="/">
               Furniture.
             </Typography>
 

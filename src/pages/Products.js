@@ -1,8 +1,9 @@
-import { Container, Grid, Button, Typography } from "@mui/material";
+import { Container, Grid, Button, Typography, Box } from "@mui/material";
 import { useContext, useState, useEffect } from "react";
 import { GlobalContext } from "../context/GlobalState";
 import ProductItem from "../components/ProductItem";
 import { useLocation } from "react-router-dom";
+import { FiChevronDown } from "react-icons/fi";
 
 export default function Products() {
   const {
@@ -97,86 +98,101 @@ export default function Products() {
       }
     }
   };
+
+  const [isActive, setIsActive] = useState(false);
+
+  const handleFilterOpen = () => {
+    setIsActive(!isActive);
+  };
+
   return (
     <>
       <section className="section section-margin">
         <Container maxWidth="lg">
-          <Grid container>
+          <Grid container sx={{ position: "relative" }}>
             <Grid item md={3}>
-              <div className="sidebar-filter">
+              <div
+                className={isActive ? "sidebar-filter show" : "sidebar-filter"}
+              >
                 <div className="list category-list">
                   <Typography className="title">Category</Typography>
-                  {categories.map((category) => (
-                    <div key={category}>
-                      <input
-                        type="checkbox"
-                        id={category}
-                        value={category}
-                        checked={selectedCategory.includes(category)}
-                        onChange={handleChangeCategory}
-                      />
-                      <label htmlFor={category}>{category}</label>
-                    </div>
-                  ))}
+                  <Box>
+                    {categories.map((category) => (
+                      <div key={category}>
+                        <input
+                          type="checkbox"
+                          id={category}
+                          value={category}
+                          checked={selectedCategory.includes(category)}
+                          onChange={handleChangeCategory}
+                        />
+                        <label htmlFor={category}>{category}</label>
+                      </div>
+                    ))}
+                  </Box>
                 </div>
                 <div className="list material-list">
                   <Typography className="title">Material</Typography>
-                  {allMaterials.map((material, index) => (
-                    <div key={`${material}-${index}`}>
-                      <input
-                        type="checkbox"
-                        id={`${material}-${index}`}
-                        value={material}
-                        checked={selectedMaterial.includes(material)}
-                        onChange={handleChangeMaterial}
-                      />
-                      <label htmlFor={material}>{material}</label>
-                    </div>
-                  ))}
+                  <Box>
+                    {allMaterials.map((material, index) => (
+                      <div key={`${material}-${index}`}>
+                        <input
+                          type="checkbox"
+                          id={`${material}-${index}`}
+                          value={material}
+                          checked={selectedMaterial.includes(material)}
+                          onChange={handleChangeMaterial}
+                        />
+                        <label htmlFor={material}>{material}</label>
+                      </div>
+                    ))}
+                  </Box>
                 </div>
 
                 <div className="list price-list">
                   <Typography className="title">Price</Typography>
-                  <div>
-                    <input
-                      type="checkbox"
-                      name="range-0-250"
-                      value="0-250"
-                      checked={selectedRange.includes("0-250")}
-                      onChange={handleChangePrice}
-                    />
-                    <label>0-250</label>
-                  </div>
-                  <div>
-                    <input
-                      type="checkbox"
-                      name="range-250-500"
-                      value="250-500"
-                      checked={selectedRange.includes("250-500")}
-                      onChange={handleChangePrice}
-                    />
-                    <label>250-500</label>
-                  </div>
-                  <div>
-                    <input
-                      type="checkbox"
-                      name="range-500-1000"
-                      value="500-1000"
-                      checked={selectedRange.includes("500-1000")}
-                      onChange={handleChangePrice}
-                    />
-                    <label>500-1000</label>
-                  </div>
-                  <div>
-                    <input
-                      type="checkbox"
-                      name="range-500-1000"
-                      value="1000-above"
-                      checked={selectedRange.includes("1000-above")}
-                      onChange={handleChangePrice}
-                    />
-                    <label>1000-above</label>
-                  </div>
+                  <Box>
+                    <div>
+                      <input
+                        type="checkbox"
+                        name="range-0-250"
+                        value="0-250"
+                        checked={selectedRange.includes("0-250")}
+                        onChange={handleChangePrice}
+                      />
+                      <label>0-250</label>
+                    </div>
+                    <div>
+                      <input
+                        type="checkbox"
+                        name="range-250-500"
+                        value="250-500"
+                        checked={selectedRange.includes("250-500")}
+                        onChange={handleChangePrice}
+                      />
+                      <label>250-500</label>
+                    </div>
+                    <div>
+                      <input
+                        type="checkbox"
+                        name="range-500-1000"
+                        value="500-1000"
+                        checked={selectedRange.includes("500-1000")}
+                        onChange={handleChangePrice}
+                      />
+                      <label>500-1000</label>
+                    </div>
+                    <div>
+                      <input
+                        type="checkbox"
+                        name="range-500-1000"
+                        value="1000-above"
+                        checked={selectedRange.includes("1000-above")}
+                        onChange={handleChangePrice}
+                      />
+                      <label>1000-above</label>
+                    </div>
+                  </Box>
                 </div>
                 <div className="btn-wrapper">
                   <Button className="btn btn-primary" onClick={handleFilter}>
@@ -189,7 +205,19 @@ export default function Products() {
               </div>
             </Grid>
             <Grid item md={9} className="product-list-grid">
-              <Typography className="heading">{title}</Typography>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}
+              >
+                <Typography className="heading">{title}</Typography>
+                <Box className="filter-dropdown" onClick={handleFilterOpen}>
+                  <Typography sx={{ marginRight: "6px" }}>Filter</Typography>
+                  <FiChevronDown />
+                </Box>
+              </Box>
               <div className="product-list">
                 {searchResult.length > 0 ? (
                   searchResult.map((item) => (

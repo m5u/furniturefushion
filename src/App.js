@@ -10,13 +10,24 @@ import Footer from "./components/Footer";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import Contact from "./pages/Contact";
+import About from "./pages/About";
 function App() {
   // Create a custom theme with updated typography
   const theme = createTheme({
     typography: {
       fontFamily: "Poppins, sans-serif",
+      // fontFamily: "'Jost', sans-serif",
       fontSize: 14,
     },
+    // overrides: {
+    //   MuiCssBaseline: {
+    //     "@global": {
+    //       body: {
+    //         fontSize: "14px",
+    //       },
+    //     },
+    //   },
+    // },
   });
   return (
     <GlobalProvider>
@@ -26,6 +37,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
+            <Route path="/about" element={<About />} />
             <Route path="/products" element={<Products />} />
             <Route path="/product/:id" element={<ProductDetailPage />} />
             <Route path="/cart" element={<Cart />} />
