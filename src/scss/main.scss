@@ -413,10 +413,12 @@ $danger-color: #dc3545; // red
 
 @keyframes outer-left{
     from {
-        transform: translateX(50%);
+        transform: translateX(-50%);
+        opacity: 0;
       }
       to {
         transform: none;
+        opacity: 1;
       }
 }
 

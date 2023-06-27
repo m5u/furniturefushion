@@ -374,10 +374,12 @@ input[type=number] {
 
 @keyframes outer-left {
   from {
-    transform: translateX(50%);
+    transform: translateX(-50%);
+    opacity: 0;
   }
   to {
     transform: none;
+    opacity: 1;
   }
 }
 .category-card-wrap {
